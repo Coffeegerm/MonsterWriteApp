@@ -1,0 +1,51 @@
+export const NAV_THEME = {
+  light: {
+    background: 'hsl(0 0% 100%)',
+    border: 'hsl(240 5.9% 90%)',
+    card: 'hsl(0 0% 100%)',
+    notification: 'hsl(0 84.2% 60.2%)',
+    primary: 'hsl(240 5.9% 10%)',
+    text: 'hsl(240 10% 3.9%)',
+  },
+  dark: {
+    background: 'hsl(240 10% 3.9%)',
+    border: 'hsl(240 3.7% 15.9%)',
+    card: 'hsl(240 10% 3.9%)',
+    notification: 'hsl(0 72% 51%)',
+    primary: 'hsl(0 0% 98%)',
+    text: 'hsl(0 0% 98%)',
+  },
+};
+
+export const COLORS = {
+  light: {
+    background: 'hsl(0 0% 100%)',
+    foreground: 'hsl(240 10% 3.9%)',
+    card: 'hsl(0 0% 100%)',
+    popover: 'hsl(0 0% 100%)',
+    primary: 'hsl(240 5.9% 10%)',
+    secondary: 'hsl(240 4.8% 95.9%)',
+    muted: 'hsl(240 4.8% 95.9%)',
+    accent: 'hsl(240 4.8% 95.9%)',
+    destructive: 'hsl(0 84.2% 60.2%)',
+    border: 'hsl(240 5.9% 90%)',
+    input: 'hsl(240 5.9% 90%)',
+    ring: 'hsl(240 5.9% 10%)',
+    radius: '0.5rem',
+  },
+  dark: {
+    background: 'hsl(240 10% 3.9%)',
+    foreground: 'hsl(0 0% 98%)',
+    card: 'hsl(240 10% 3.9%)',
+    popover: 'hsl(240 10% 3.9%)',
+    primary: 'hsl(0 0% 98%)',
+    secondary: 'hsl(240 3.7% 15.9%)',
+    muted: 'hsl(240 3.7% 15.9%)',
+    accent: 'hsl(240 3.7% 15.9%)',
+    destructive: 'hsl(0 72% 51%)',
+    border: 'hsl(240 3.7% 15.9%)',
+    input: 'hsl(240 3.7% 15.9%)',
+    ring: 'hsl(240 4.9% 83.9%)',
+    radius: '0.5rem',
+  },
+};
