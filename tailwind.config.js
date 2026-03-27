@@ -42,6 +42,15 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        // MonsterWrite brand tokens
+        inkwell: '#1A1625',
+        'dusk-plum': '#2E2640',
+        parchment: '#F2EDE4',
+        'monster-green': '#5BF178',
+        'hungry-orange': '#FF7B3A',
+        'happy-gold': '#FFD166',
+        'sad-blue': '#6CAFD8',
+        'mystic-violet': '#9B72CF',
       },
       borderRadius: {
         sm: 'var(--radius)',
