@@ -68,6 +68,7 @@ Use the `/browse` skill from gstack for all web browsing. Never use `mcp__claude
 If gstack skills aren't working, run `cd .claude/skills/gstack && ./setup` to build the binary and register skills.
 
 Available gstack skills:
+
 - `/office-hours` — open-ended consulting and advice
 - `/plan-ceo-review` — review a plan from a CEO perspective
 - `/plan-eng-review` — review a plan from an engineering perspective

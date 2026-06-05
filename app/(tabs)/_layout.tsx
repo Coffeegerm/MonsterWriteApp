@@ -1,18 +1,27 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { Platform } from 'react-native';
 
 import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
+// Lucide icons used for cross-platform tab bar
+import { Home, PenLine, Smile, User } from 'lucide-react-native';
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  const scheme = colorScheme ?? 'light';
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: Colors[scheme].monsterGreen,
+        tabBarInactiveTintColor: Colors[scheme].tabIconDefault,
+        tabBarStyle: {
+          backgroundColor: Colors[scheme].tabBar,
+          borderTopColor: Colors[scheme].border,
+        },
         headerShown: false,
         tabBarButton: HapticTab,
       }}>
@@ -20,14 +29,28 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="write"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Write',
+          tabBarIcon: ({ color, size }) => <PenLine color={color} size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="monster"
+        options={{
+          title: 'Monster',
+          tabBarIcon: ({ color, size }) => <Smile color={color} size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, size }) => <User color={color} size={size} />,
         }}
       />
     </Tabs>

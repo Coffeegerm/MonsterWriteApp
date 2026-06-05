@@ -1,41 +1,49 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
+// MonsterWrite brand palette
+export const BrandColors = {
+  inkwell: '#1A1625',
+  duskPlum: '#2E2640',
+  parchment: '#F2EDE4',
+  monsterGreen: '#5BF178',
+  hungryOrange: '#FF7B3A',
+  happyGold: '#FFD166',
+  sadBlue: '#6CAFD8',
+  mysticViolet: '#9B72CF',
+} as const;
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    text: '#1A1625',
+    background: '#F2EDE4',
+    tint: '#5BF178',
+    icon: '#2E2640',
+    tabIconDefault: '#9BA1A6',
+    tabIconSelected: '#5BF178',
+    tabBar: '#F2EDE4',
+    card: '#FFFFFF',
+    border: '#E0D9CE',
+    ...BrandColors,
   },
   dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    text: '#F2EDE4',
+    background: '#1A1625',
+    tint: '#5BF178',
+    icon: '#9B72CF',
+    tabIconDefault: '#6B7280',
+    tabIconSelected: '#5BF178',
+    tabBar: '#1A1625',
+    card: '#2E2640',
+    border: '#3D3255',
+    ...BrandColors,
   },
 };
 
 export const Fonts = Platform.select({
   ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
     sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
     serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
     rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
     mono: 'ui-monospace',
   },
   default: {
