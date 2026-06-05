@@ -50,6 +50,8 @@ module.exports = {
     ],
     "expo-updates",
     "expo-secure-store",
+    "expo-font",
+    "expo-web-browser",
   ],
   experiments: {
     typedRoutes: true,
