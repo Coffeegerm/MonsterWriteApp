@@ -1,61 +1,71 @@
-import { Platform } from 'react-native';
-
-// MonsterWrite brand palette
+// MonsterWrite brand palette — warm dark academia.
+// Light = candle-lit study (parchment). Dark = midnight library (espresso).
+// No pure white, no pure grey, no pure black. See docs/design-system.md.
 export const BrandColors = {
-  inkwell: '#1A1625',
-  duskPlum: '#2E2640',
-  parchment: '#F2EDE4',
-  monsterGreen: '#5BF178',
-  hungryOrange: '#FF7B3A',
-  happyGold: '#FFD166',
-  sadBlue: '#6CAFD8',
-  mysticViolet: '#9B72CF',
+  // warm neutrals
+  paper: '#F0E6D1', // light bg (parchment)
+  surface: '#FBF6EB', // light card
+  ink: '#14100A', // espresso (dark bg / primary text)
+  inkSurface: '#2A2117', // dark card
+  // accents
+  brass: '#B0822F', // primary accent / gilt
+  oxblood: '#74302E', // emphasis + destructive
+  olive: '#5E6535', // success / "fed"
+  terracotta: '#B05C36', // warning / hunger
+  studyTeal: '#3F6B66', // info
+} as const;
+
+// Monster mood scale (flourishing -> fading)
+export const MoodColors = {
+  ecstatic: '#6E7A33', // flourishing (olive-green)
+  happy: '#C2902F', // amber gold
+  neutral: '#A87B4E', // clay
+  sad: '#6E8597', // cold dusty slate-blue
+  distressed: '#6B5560', // ashen plum
 } as const;
 
 export const Colors = {
   light: {
-    text: '#1A1625',
-    background: '#F2EDE4',
-    tint: '#5BF178',
-    icon: '#2E2640',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: '#5BF178',
-    tabBar: '#F2EDE4',
-    card: '#FFFFFF',
-    border: '#E0D9CE',
+    text: '#14100A',
+    background: '#F0E6D1',
+    card: '#FBF6EB',
+    border: '#D9C7A4',
+    tint: '#14100A', // primary / ink button
+    primary: '#14100A',
+    accent: '#B0822F',
+    icon: '#14100A',
+    tabBar: '#F0E6D1',
+    tabIconDefault: '#7A6A50',
+    tabIconSelected: '#B0822F',
     ...BrandColors,
+    ...MoodColors,
   },
   dark: {
-    text: '#F2EDE4',
-    background: '#1A1625',
-    tint: '#5BF178',
-    icon: '#9B72CF',
-    tabIconDefault: '#6B7280',
-    tabIconSelected: '#5BF178',
-    tabBar: '#1A1625',
-    card: '#2E2640',
-    border: '#3D3255',
+    text: '#F6EEDD',
+    background: '#1E1810',
+    card: '#2A2117',
+    border: '#3A2E1F',
+    tint: '#F6EEDD', // primary / paper button
+    primary: '#F6EEDD',
+    accent: '#C99A45',
+    icon: '#F6EEDD',
+    tabBar: '#1E1810',
+    tabIconDefault: '#9A8868',
+    tabIconSelected: '#C99A45',
     ...BrandColors,
+    ...MoodColors,
   },
 };
 
-export const Fonts = Platform.select({
-  ios: {
-    sans: 'system-ui',
-    serif: 'ui-serif',
-    rounded: 'ui-rounded',
-    mono: 'ui-monospace',
-  },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
-  },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-  },
-});
+// Font families — loaded in app/_layout.tsx via useFonts.
+// display = titles & monster names · serif = body & UI · mono = word counts, stats, editor.
+export const Fonts = {
+  display: 'CormorantGaramond_600SemiBold',
+  displayBold: 'CormorantGaramond_700Bold',
+  serif: 'EBGaramond_400Regular',
+  serifMedium: 'EBGaramond_500Medium',
+  serifSemiBold: 'EBGaramond_600SemiBold',
+  mono: 'CourierPrime_400Regular',
+  monoBold: 'CourierPrime_700Bold',
+  sans: 'EBGaramond_400Regular', // serif-forward brand; sans kept as a fallback alias
+} as const;
