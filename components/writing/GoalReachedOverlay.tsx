@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { View, Text } from 'react-native';
+import { Sparkles } from 'lucide-react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -39,14 +40,14 @@ export default function GoalReachedOverlay({ visible, onDismiss }: GoalReachedOv
   if (!visible) return null;
 
   return (
-    <View className="absolute inset-0 items-center justify-center bg-black/40">
+    <View className="absolute inset-0 items-center justify-center bg-ink/60">
       <Animated.View
         style={containerStyle}
-        className="mx-8 rounded-3xl bg-monster-green px-8 py-10 items-center gap-3">
-        <Text style={{ fontSize: 56 }}>🎉</Text>
-        <Text className="text-2xl font-bold text-inkwell">Monster Fed!</Text>
-        <Text className="text-center text-sm text-inkwell/80">
-          Your monster is happy and full. Keep writing to rack up more words!
+        className="mx-8 rounded-xl bg-olive px-8 py-10 items-center gap-3">
+        <Sparkles size={48} strokeWidth={2} color="#F0E6D1" />
+        <Text className="font-display text-3xl text-paper">Monster fed</Text>
+        <Text className="text-center font-serif text-sm text-paper/80">
+          Your monster is content and full. Keep writing to gather more words.
         </Text>
       </Animated.View>
     </View>

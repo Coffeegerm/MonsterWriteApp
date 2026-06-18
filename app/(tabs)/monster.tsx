@@ -32,20 +32,20 @@ export default function MonsterScreen() {
 
   if (!monster) {
     return (
-      <View className="flex-1 items-center justify-center bg-parchment dark:bg-inkwell">
-        <Text className="text-dusk-plum dark:text-mystic-violet">No monster yet.</Text>
+      <View className="flex-1 items-center justify-center bg-paper dark:bg-ink">
+        <Text className="font-serif text-muted-foreground">No monster yet.</Text>
       </View>
     );
   }
 
   return (
     <ScrollView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       contentContainerStyle={{ paddingTop: insets.top + 16, paddingBottom: insets.bottom + 24 }}
       contentContainerClassName="px-6 gap-6">
 
       {/* Monster name */}
-      <Text className="text-center text-3xl font-bold text-inkwell dark:text-parchment">
+      <Text className="text-center font-display text-4xl text-ink dark:text-paper">
         {monster.name}
       </Text>
 
@@ -60,41 +60,41 @@ export default function MonsterScreen() {
       </View>
 
       {/* Hunger bar */}
-      <View className="rounded-2xl bg-white dark:bg-dusk-plum p-4">
+      <View className="rounded-lg border border-border bg-surface dark:bg-ink-surface p-4">
         <HungerBar hunger={monster.hunger} />
       </View>
 
       {/* Stats */}
-      <View className="rounded-2xl bg-white dark:bg-dusk-plum p-4 gap-3">
-        <Text className="text-sm font-semibold text-dusk-plum dark:text-mystic-violet uppercase tracking-wide">
+      <View className="rounded-lg border border-border bg-surface dark:bg-ink-surface p-4 gap-3">
+        <Text className="font-serif text-xs uppercase tracking-[0.16em] text-muted-foreground">
           Stats
         </Text>
         <View className="flex-row justify-between">
-          <Text className="text-sm text-dusk-plum dark:text-mystic-violet">Current streak</Text>
-          <Text className="text-sm font-bold text-inkwell dark:text-parchment">
+          <Text className="font-serif text-sm text-muted-foreground">Current streak</Text>
+          <Text className="font-mono text-sm text-ink dark:text-paper">
             {monster.streak} {monster.streak === 1 ? 'day' : 'days'}
           </Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-sm text-dusk-plum dark:text-mystic-violet">Evolution stage</Text>
-          <Text className="text-sm font-bold text-inkwell dark:text-parchment">
+          <Text className="font-serif text-sm text-muted-foreground">Evolution stage</Text>
+          <Text className="font-serif text-sm font-semibold text-ink dark:text-paper">
             {STAGE_LABELS[monster.evolutionStage]}
           </Text>
         </View>
         <View className="flex-row justify-between">
-          <Text className="text-sm text-dusk-plum dark:text-mystic-violet">Today's words</Text>
-          <Text className="text-sm font-bold text-inkwell dark:text-parchment">
+          <Text className="font-serif text-sm text-muted-foreground">Today&apos;s words</Text>
+          <Text className="font-mono text-sm text-ink dark:text-paper">
             {todayWordCount.toLocaleString()}
           </Text>
         </View>
       </View>
 
-      {/* Write Now button — only if goal not yet met */}
+      {/* Write button — only if goal not yet met */}
       {!goalMet && (
         <Button
           onPress={() => router.push('/(tabs)/write')}
-          className="h-14 rounded-xl bg-monster-green active:bg-monster-green/80">
-          <UIText className="text-base font-bold text-inkwell">Write Now</UIText>
+          className="h-14 rounded-lg bg-ink dark:bg-paper active:bg-ink/90 dark:active:bg-paper/90">
+          <UIText className="font-serif text-base font-semibold text-paper dark:text-ink">Write now</UIText>
         </Button>
       )}
     </ScrollView>

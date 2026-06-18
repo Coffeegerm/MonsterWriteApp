@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { View, Text, ScrollView, Alert, ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
+import { ArrowLeft } from 'lucide-react-native';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Text as UIText } from '@/components/ui/text';
 import { signUp } from '@/services/auth.service';
 import { useAuthStore } from '@/stores/auth.store';
+import { Colors } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function SignUpScreen() {
+  const scheme = useColorScheme() ?? 'light';
   const { setSession } = useAuthStore();
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
@@ -45,18 +49,22 @@ export default function SignUpScreen() {
 
   return (
     <ScrollView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       contentContainerClassName="flex-grow justify-center px-6 py-12"
       keyboardShouldPersistTaps="handled">
       {/* Header */}
       <View className="mb-10">
-        <Button variant="ghost" onPress={() => router.back()} className="mb-4 self-start p-0">
-          <UIText className="text-dusk-plum dark:text-mystic-violet">← Back</UIText>
+        <Button
+          variant="ghost"
+          onPress={() => router.back()}
+          className="mb-4 flex-row items-center gap-1 self-start p-0">
+          <ArrowLeft size={18} strokeWidth={2} color={Colors[scheme].tabIconDefault} />
+          <UIText className="font-serif text-muted-foreground">Back</UIText>
         </Button>
-        <Text className="text-3xl font-bold text-inkwell dark:text-parchment">
-          Create Account
+        <Text className="font-display text-4xl text-ink dark:text-paper">
+          Create account
         </Text>
-        <Text className="mt-1 text-sm text-dusk-plum dark:text-mystic-violet">
+        <Text className="mt-1 font-serif text-sm text-muted-foreground">
           Your monster is waiting to meet you.
         </Text>
       </View>
@@ -86,7 +94,7 @@ export default function SignUpScreen() {
           label="Password"
           value={password}
           onChangeText={setPassword}
-          placeholder="••••••••"
+          placeholder="Your password"
           secureTextEntry
           autoComplete="new-password"
           error={errors.password}
@@ -95,22 +103,22 @@ export default function SignUpScreen() {
         <Button
           onPress={handleSignUp}
           disabled={loading}
-          className="mt-2 h-14 rounded-xl bg-monster-green active:bg-monster-green/80">
+          className="mt-2 h-14 rounded-lg bg-ink dark:bg-paper active:bg-ink/90 dark:active:bg-paper/90">
           {loading ? (
-            <ActivityIndicator color="#1A1625" />
+            <ActivityIndicator color="#B0822F" />
           ) : (
-            <UIText className="text-base font-bold text-inkwell">Create Account</UIText>
+            <UIText className="font-serif text-base font-semibold text-paper dark:text-ink">Create account</UIText>
           )}
         </Button>
       </View>
 
       {/* Footer */}
       <View className="mt-8 flex-row items-center justify-center gap-1">
-        <Text className="text-sm text-dusk-plum dark:text-mystic-violet">
+        <Text className="font-serif text-sm text-muted-foreground">
           Already have an account?
         </Text>
         <Button variant="link" onPress={() => router.push('/(auth)/sign-in')} className="p-0">
-          <UIText className="text-sm font-semibold text-monster-green">Sign In</UIText>
+          <UIText className="font-serif text-sm font-semibold text-accent">Sign in</UIText>
         </Button>
       </View>
     </ScrollView>

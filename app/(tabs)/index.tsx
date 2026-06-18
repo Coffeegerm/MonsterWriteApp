@@ -42,22 +42,22 @@ export default function HomeScreen() {
   });
 
   const ctaLabel = goalMet
-    ? 'Goal Complete! 🎉'
+    ? 'Goal complete'
     : todayWordCount > 0
-      ? 'Keep Writing'
-      : 'Start Writing';
+      ? 'Keep writing'
+      : 'Start writing';
 
   return (
     <ScrollView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       contentContainerClassName="px-6 pt-14 pb-10 gap-8">
 
       {/* Greeting */}
       <View>
-        <Text className="text-2xl font-bold text-inkwell dark:text-parchment">
-          {greeting()}, {user?.displayName ?? 'Writer'}!
+        <Text className="font-display text-3xl text-ink dark:text-paper">
+          {greeting()}, {user?.displayName ?? 'Writer'}
         </Text>
-        <Text className="mt-0.5 text-sm text-dusk-plum dark:text-mystic-violet">{today}</Text>
+        <Text className="mt-0.5 font-serif text-sm text-muted-foreground">{today}</Text>
       </View>
 
       {/* Monster preview */}
@@ -70,8 +70,8 @@ export default function HomeScreen() {
       {/* Progress ring */}
       <View className="items-center gap-2">
         <ProgressRing wordCount={todayWordCount} goal={dailyGoal} size={180} />
-        <Text className="text-xs text-dusk-plum dark:text-mystic-violet">
-          {goalMet ? 'Monster fed for today!' : "Today's progress"}
+        <Text className="font-serif text-xs text-muted-foreground">
+          {goalMet ? 'Monster fed for today.' : "Today's progress"}
         </Text>
       </View>
 
@@ -84,8 +84,8 @@ export default function HomeScreen() {
       <Button
         onPress={() => router.push('/(tabs)/write')}
         disabled={goalMet}
-        className="h-14 rounded-xl bg-monster-green active:bg-monster-green/80 disabled:bg-monster-green/40">
-        <UIText className="text-base font-bold text-inkwell">{ctaLabel}</UIText>
+        className="h-14 rounded-lg bg-ink dark:bg-paper active:bg-ink/90 dark:active:bg-paper/90 disabled:opacity-40">
+        <UIText className="font-serif text-base font-semibold text-paper dark:text-ink">{ctaLabel}</UIText>
       </Button>
     </ScrollView>
   );

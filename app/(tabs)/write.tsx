@@ -44,7 +44,7 @@ export default function WriteScreen() {
 
   return (
     <KeyboardAvoidingView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       keyboardVerticalOffset={0}>
 
@@ -52,8 +52,8 @@ export default function WriteScreen() {
       <View
         style={{ paddingTop: insets.top + 8 }}
         className="flex-row items-center justify-between px-4 pb-2 border-b border-border">
-        <Text className="text-sm font-medium text-dusk-plum dark:text-mystic-violet">{today}</Text>
-        <Text className="text-sm font-semibold text-inkwell dark:text-parchment">
+        <Text className="font-serif text-sm font-medium text-muted-foreground">{today}</Text>
+        <Text className="font-mono text-sm text-ink dark:text-paper">
           {sessionWordCount} words this session
         </Text>
       </View>
@@ -68,13 +68,13 @@ export default function WriteScreen() {
       {/* Editor */}
       <ScrollView className="flex-1" keyboardShouldPersistTaps="handled">
         <TextInput
-          className="flex-1 px-5 py-4 text-base leading-relaxed text-inkwell dark:text-parchment"
+          className="flex-1 px-5 py-4 font-mono text-base leading-relaxed text-ink dark:text-paper"
           style={{ color: Colors[colorScheme].text, minHeight: 400 }}
           multiline
           autoFocus
           textAlignVertical="top"
           placeholder="Start writing to feed your monster..."
-          placeholderTextColor={colorScheme === 'dark' ? '#6B7280' : '#9BA1A6'}
+          placeholderTextColor={colorScheme === 'dark' ? '#9A8868' : '#7A6A50'}
           value={content}
           onChangeText={handleTextChange}
           scrollEnabled={false}
@@ -85,9 +85,9 @@ export default function WriteScreen() {
       <View
         style={{ paddingBottom: insets.bottom + 8 }}
         className="flex-row items-center justify-center border-t border-border px-4 pt-2">
-        <Text className="text-sm text-dusk-plum dark:text-mystic-violet">
+        <Text className="font-mono text-sm text-muted-foreground">
           {todayWordCount} / {dailyGoal} words today
-          {goalMet ? ' ✓' : ''}
+          {goalMet ? ' · complete' : ''}
         </Text>
       </View>
 

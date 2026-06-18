@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { BrandColors } from '@/constants/theme';
 
 interface HungerBarProps {
-  hunger: number; // 0–100
+  hunger: number; // 0-100
 }
 
 export default function HungerBar({ hunger }: HungerBarProps) {
@@ -20,20 +20,20 @@ export default function HungerBar({ hunger }: HungerBarProps) {
 
   const barColor =
     hunger <= 30
-      ? BrandColors.monsterGreen
+      ? BrandColors.olive
       : hunger <= 70
-        ? BrandColors.hungryOrange
-        : '#EF4444';
+        ? BrandColors.terracotta
+        : BrandColors.oxblood;
 
   const label = hunger === 0 ? 'Full' : hunger <= 30 ? 'Content' : hunger <= 70 ? 'Peckish' : 'Starving';
 
   return (
     <View className="w-full gap-1.5">
       <View className="flex-row justify-between">
-        <Text className="text-sm text-dusk-plum dark:text-mystic-violet">Hunger</Text>
-        <Text className="text-sm font-medium text-inkwell dark:text-parchment">{label}</Text>
+        <Text className="font-serif text-sm text-muted-foreground">Hunger</Text>
+        <Text className="font-serif text-sm font-medium text-ink dark:text-paper">{label}</Text>
       </View>
-      <View className="h-3 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-dusk-plum">
+      <View className="h-3 w-full overflow-hidden rounded-full bg-border">
         <Animated.View
           style={[barStyle, { backgroundColor: barColor, height: '100%', borderRadius: 9999 }]}
         />

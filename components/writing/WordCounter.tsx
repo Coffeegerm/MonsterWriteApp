@@ -23,25 +23,25 @@ export default function WordCounter({ todayWordCount, sessionWordCount, dailyGoa
 
   const barColor =
     progress >= 1
-      ? BrandColors.monsterGreen
+      ? BrandColors.olive
       : progress >= 0.25
-        ? BrandColors.hungryOrange
-        : BrandColors.sadBlue;
+        ? BrandColors.brass
+        : BrandColors.terracotta;
 
   return (
     <View className="gap-1.5 px-4 pb-2 pt-1">
       {/* Progress bar */}
-      <View className="h-2 w-full overflow-hidden rounded-full bg-gray-200 dark:bg-dusk-plum">
+      <View className="h-2 w-full overflow-hidden rounded-full bg-border">
         <Animated.View
           style={[progressStyle, { backgroundColor: barColor, height: '100%', borderRadius: 9999 }]}
         />
       </View>
       {/* Counts */}
       <View className="flex-row justify-between">
-        <Text className="text-xs text-dusk-plum dark:text-mystic-violet">
+        <Text className="font-mono text-xs text-muted-foreground">
           Session: {sessionWordCount} words
         </Text>
-        <Text className="text-xs font-medium text-inkwell dark:text-parchment">
+        <Text className="font-mono text-xs text-ink dark:text-paper">
           {todayWordCount} / {dailyGoal} today
         </Text>
       </View>

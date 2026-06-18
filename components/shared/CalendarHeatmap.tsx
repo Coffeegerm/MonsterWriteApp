@@ -1,6 +1,7 @@
-import { View, Text, Pressable } from 'react-native';
+import { View, Text } from 'react-native';
 import { getDateRange, getToday } from '@/lib/date';
-import { BrandColors } from '@/constants/theme';
+import { BrandColors, MoodColors, Colors } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface DayData {
   date: string;
@@ -16,16 +17,18 @@ interface CalendarHeatmapProps {
 const DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 const WEEKS = 12;
 
-function getCellColor(day: DayData | undefined, dailyGoal: number): string {
-  if (!day || day.wordCount === 0) return '#E5E7EB';
+function getCellColor(day: DayData | undefined, dailyGoal: number, emptyColor: string): string {
+  if (!day || day.wordCount === 0) return emptyColor;
   if (day.goalMet) {
     const intensity = Math.min(day.wordCount / dailyGoal, 2);
-    return intensity >= 1.5 ? BrandColors.monsterGreen : '#7BF198';
+    return intensity >= 1.5 ? BrandColors.olive : MoodColors.ecstatic;
   }
-  return BrandColors.hungryOrange + '99'; // partial progress
+  return BrandColors.terracotta + '99'; // partial progress
 }
 
 export default function CalendarHeatmap({ data, dailyGoal }: CalendarHeatmapProps) {
+  const scheme = useColorScheme() ?? 'light';
+  const emptyColor = Colors[scheme].border;
   const today = getToday();
   const dataMap = new Map(data.map((d) => [d.date, d]));
 
@@ -50,7 +53,7 @@ export default function CalendarHeatmap({ data, dailyGoal }: CalendarHeatmapProp
         {DAYS.map((d, i) => (
           <Text
             key={i}
-            className="text-[10px] text-dusk-plum dark:text-mystic-violet"
+            className="font-serif text-[10px] text-muted-foreground"
             style={{ width: 18, textAlign: 'center' }}>
             {d}
           </Text>
@@ -65,7 +68,7 @@ export default function CalendarHeatmap({ data, dailyGoal }: CalendarHeatmapProp
               const dayData = dataMap.get(date);
               const isToday = date === today;
               const isFuture = date > today;
-              const color = isFuture ? 'transparent' : getCellColor(dayData, dailyGoal);
+              const color = isFuture ? 'transparent' : getCellColor(dayData, dailyGoal, emptyColor);
 
               return (
                 <View
@@ -76,7 +79,7 @@ export default function CalendarHeatmap({ data, dailyGoal }: CalendarHeatmapProp
                     borderRadius: 3,
                     backgroundColor: isFuture ? 'transparent' : color,
                     borderWidth: isToday ? 1.5 : 0,
-                    borderColor: isToday ? BrandColors.monsterGreen : 'transparent',
+                    borderColor: isToday ? BrandColors.brass : 'transparent',
                   }}
                 />
               );
@@ -87,11 +90,11 @@ export default function CalendarHeatmap({ data, dailyGoal }: CalendarHeatmapProp
 
       {/* Legend */}
       <View className="flex-row items-center gap-3 mt-1">
-        <Text className="text-[10px] text-dusk-plum dark:text-mystic-violet">Less</Text>
-        {['#E5E7EB', BrandColors.hungryOrange + '99', '#7BF198', BrandColors.monsterGreen].map((c, i) => (
+        <Text className="font-serif text-[10px] text-muted-foreground">Less</Text>
+        {[emptyColor, BrandColors.terracotta + '99', MoodColors.ecstatic, BrandColors.olive].map((c, i) => (
           <View key={i} style={{ width: 12, height: 12, borderRadius: 2, backgroundColor: c }} />
         ))}
-        <Text className="text-[10px] text-dusk-plum dark:text-mystic-violet">More</Text>
+        <Text className="font-serif text-[10px] text-muted-foreground">More</Text>
       </View>
     </View>
   );

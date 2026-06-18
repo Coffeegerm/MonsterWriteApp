@@ -1,6 +1,7 @@
 import { View, Text } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
-import { BrandColors } from '@/constants/theme';
+import { BrandColors, Colors } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 interface ProgressRingProps {
   wordCount: number;
@@ -9,6 +10,7 @@ interface ProgressRingProps {
 }
 
 export default function ProgressRing({ wordCount, goal, size = 160 }: ProgressRingProps) {
+  const scheme = useColorScheme() ?? 'light';
   const progress = Math.min(wordCount / goal, 1);
   const radius = (size - 20) / 2;
   const circumference = 2 * Math.PI * radius;
@@ -17,10 +19,10 @@ export default function ProgressRing({ wordCount, goal, size = 160 }: ProgressRi
 
   const ringColor =
     wordCount === 0
-      ? BrandColors.sadBlue
+      ? Colors[scheme].tabIconDefault
       : progress >= 1
-        ? BrandColors.monsterGreen
-        : BrandColors.hungryOrange;
+        ? BrandColors.olive
+        : BrandColors.brass;
 
   return (
     <View style={{ width: size, height: size }} className="items-center justify-center">
@@ -30,7 +32,7 @@ export default function ProgressRing({ wordCount, goal, size = 160 }: ProgressRi
           cx={center}
           cy={center}
           r={radius}
-          stroke="#E5E7EB"
+          stroke={Colors[scheme].border}
           strokeWidth={10}
           fill="transparent"
         />
@@ -51,10 +53,10 @@ export default function ProgressRing({ wordCount, goal, size = 160 }: ProgressRi
       </Svg>
       {/* Text in center */}
       <View className="items-center">
-        <Text className="text-2xl font-bold text-inkwell dark:text-parchment">
+        <Text className="font-mono text-3xl text-ink dark:text-paper">
           {wordCount.toLocaleString()}
         </Text>
-        <Text className="text-xs text-dusk-plum dark:text-mystic-violet">
+        <Text className="font-mono text-xs text-muted-foreground">
           / {goal.toLocaleString()} words
         </Text>
       </View>

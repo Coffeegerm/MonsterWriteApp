@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { View, Text, ScrollView, Switch, Alert, ActivityIndicator } from 'react-native';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { PenLine, Flame, Gem, CalendarDays } from 'lucide-react-native';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -74,32 +75,32 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       contentContainerStyle={{ paddingTop: insets.top + 16, paddingBottom: insets.bottom + 32 }}
       contentContainerClassName="px-5 gap-6">
 
       {/* User info */}
       <View>
-        <Text className="text-2xl font-bold text-inkwell dark:text-parchment">
+        <Text className="font-display text-3xl text-ink dark:text-paper">
           {user?.displayName ?? 'Writer'}
         </Text>
-        <Text className="text-sm text-dusk-plum dark:text-mystic-violet">{user?.email}</Text>
-        <Text className="text-xs text-dusk-plum dark:text-mystic-violet mt-0.5">
+        <Text className="font-serif text-sm text-muted-foreground">{user?.email}</Text>
+        <Text className="font-serif text-xs text-muted-foreground mt-0.5">
           Member since {memberSince}
         </Text>
       </View>
 
       {/* Quick stats */}
       <View className="flex-row gap-3">
-        <StatCard label="Total Words" value={stats.totalWords} emoji="✍️" />
-        <StatCard label="Current Streak" value={`${stats.currentStreak}d`} emoji="🔥" />
-        <StatCard label="Best Streak" value={`${stats.longestStreak}d`} emoji="💎" />
-        <StatCard label="Days Written" value={stats.totalDays} emoji="📅" />
+        <StatCard label="Total words" value={stats.totalWords} icon={PenLine} />
+        <StatCard label="Current streak" value={`${stats.currentStreak}d`} icon={Flame} />
+        <StatCard label="Best streak" value={`${stats.longestStreak}d`} icon={Gem} />
+        <StatCard label="Days written" value={stats.totalDays} icon={CalendarDays} />
       </View>
 
       {/* Calendar heatmap */}
-      <View className="rounded-2xl bg-white dark:bg-dusk-plum p-4 gap-3">
-        <Text className="text-sm font-semibold text-dusk-plum dark:text-mystic-violet uppercase tracking-wide">
+      <View className="rounded-lg border border-border bg-surface dark:bg-ink-surface p-4 gap-3">
+        <Text className="font-serif text-xs uppercase tracking-[0.16em] text-muted-foreground">
           Writing History
         </Text>
         {stats.isLoading ? (
@@ -113,8 +114,8 @@ export default function ProfileScreen() {
       </View>
 
       {/* Badges */}
-      <View className="rounded-2xl bg-white dark:bg-dusk-plum p-4 gap-3">
-        <Text className="text-sm font-semibold text-dusk-plum dark:text-mystic-violet uppercase tracking-wide">
+      <View className="rounded-lg border border-border bg-surface dark:bg-ink-surface p-4 gap-3">
+        <Text className="font-serif text-xs uppercase tracking-[0.16em] text-muted-foreground">
           Badges
         </Text>
         {stats.isLoading ? (
@@ -125,8 +126,8 @@ export default function ProfileScreen() {
       </View>
 
       {/* Settings */}
-      <View className="rounded-2xl bg-white dark:bg-dusk-plum p-4 gap-5">
-        <Text className="text-sm font-semibold text-dusk-plum dark:text-mystic-violet uppercase tracking-wide">
+      <View className="rounded-lg border border-border bg-surface dark:bg-ink-surface p-4 gap-5">
+        <Text className="font-serif text-xs uppercase tracking-[0.16em] text-muted-foreground">
           Settings
         </Text>
 
@@ -138,7 +139,7 @@ export default function ProfileScreen() {
             onChangeText={handleGoalChange}
             keyboardType="number-pad"
           />
-          <Text className="text-xs text-dusk-plum dark:text-mystic-violet">
+          <Text className="font-serif text-xs text-muted-foreground">
             Min 100 · Max 5,000
           </Text>
         </View>
@@ -146,18 +147,18 @@ export default function ProfileScreen() {
         {/* Save writing toggle */}
         <View className="flex-row items-center justify-between">
           <View className="flex-1 mr-4">
-            <Text className="text-sm font-medium text-inkwell dark:text-parchment">
+            <Text className="font-serif text-sm font-medium text-ink dark:text-paper">
               Save writing content
             </Text>
-            <Text className="text-xs text-dusk-plum dark:text-mystic-violet">
+            <Text className="font-serif text-xs text-muted-foreground">
               Stores your text in the cloud. Turn off to save word counts only.
             </Text>
           </View>
           <Switch
             value={saveWriting}
             onValueChange={handleSaveWritingToggle}
-            trackColor={{ false: '#D1D5DB', true: '#5BF178' }}
-            thumbColor="white"
+            trackColor={{ false: '#D9C7A4', true: '#5E6535' }}
+            thumbColor="#F0E6D1"
           />
         </View>
       </View>
@@ -167,11 +168,11 @@ export default function ProfileScreen() {
         variant="destructive"
         onPress={handleSignOut}
         disabled={signingOut}
-        className="h-12 rounded-xl">
+        className="h-12 rounded-lg">
         {signingOut ? (
-          <ActivityIndicator color="white" />
+          <ActivityIndicator color="#F0E6D1" />
         ) : (
-          <UIText className="font-semibold text-white">Sign Out</UIText>
+          <UIText className="font-serif font-semibold text-paper">Sign out</UIText>
         )}
       </Button>
     </ScrollView>

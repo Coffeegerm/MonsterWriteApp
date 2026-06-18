@@ -1,6 +1,7 @@
 import React from 'react';
 import Svg, { Circle, Ellipse, Path, Polygon, G, Rect } from 'react-native-svg';
 import { MoodState } from '@/types/monster';
+import { MoodColors } from '@/constants/theme';
 
 interface Props {
   mood: MoodState;
@@ -32,20 +33,14 @@ const EYEBROWS: Record<MoodState, { left: string; right: string }> = {
 };
 
 const MOUTHS: Record<MoodState, React.ReactNode> = {
-  ecstatic: <Path d="M 36 90 Q 50 100 64 90" stroke="#1A1625" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
-  happy: <Path d="M 38 89 Q 50 97 62 89" stroke="#1A1625" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
-  neutral: <Path d="M 38 89 L 62 89" stroke="#1A1625" strokeWidth="2.5" strokeLinecap="round" />,
-  sad: <Path d="M 38 92 Q 50 85 62 92" stroke="#1A1625" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
-  distressed: <Path d="M 36 94 Q 50 84 64 94" stroke="#1A1625" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
+  ecstatic: <Path d="M 36 90 Q 50 100 64 90" stroke="#1E1810" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
+  happy: <Path d="M 38 89 Q 50 97 62 89" stroke="#1E1810" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
+  neutral: <Path d="M 38 89 L 62 89" stroke="#1E1810" strokeWidth="2.5" strokeLinecap="round" />,
+  sad: <Path d="M 38 92 Q 50 85 62 92" stroke="#1E1810" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
+  distressed: <Path d="M 36 94 Q 50 84 64 94" stroke="#1E1810" strokeWidth="2.5" fill="none" strokeLinecap="round" />,
 };
 
-const BODY_COLORS: Record<MoodState, string> = {
-  ecstatic: '#5BF178',
-  happy: '#7FB87F',
-  neutral: '#8B7355',
-  sad: '#6CAFD8',
-  distressed: '#FF7B3A',
-};
+const BODY_COLORS = MoodColors;
 
 export default function Grimble({ mood, size = 200 }: Props) {
   const bodyColor = BODY_COLORS[mood];
@@ -59,13 +54,13 @@ export default function Grimble({ mood, size = 200 }: Props) {
       <Polygon points="28,35 22,18 36,30" fill={bodyColor} />
       <Polygon points="72,35 78,18 64,30" fill={bodyColor} />
       {/* Eyes */}
-      <Ellipse cx="37" cy="60" rx="7" ry="8" fill="#1A1625" />
-      <Ellipse cx="63" cy="60" rx="7" ry="8" fill="#1A1625" />
+      <Ellipse cx="37" cy="60" rx="7" ry="8" fill="#1E1810" />
+      <Ellipse cx="63" cy="60" rx="7" ry="8" fill="#1E1810" />
       <Circle cx="39" cy="58" r="2.5" fill="white" />
       <Circle cx="65" cy="58" r="2.5" fill="white" />
       {/* Eyebrows */}
-      <Path d={brows.left} stroke="#1A1625" strokeWidth="3" fill="none" strokeLinecap="round" />
-      <Path d={brows.right} stroke="#1A1625" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <Path d={brows.left} stroke="#1E1810" strokeWidth="3" fill="none" strokeLinecap="round" />
+      <Path d={brows.right} stroke="#1E1810" strokeWidth="3" fill="none" strokeLinecap="round" />
       {/* Mouth */}
       {MOUTHS[mood]}
       {/* Teeth (shows on happy/ecstatic) */}

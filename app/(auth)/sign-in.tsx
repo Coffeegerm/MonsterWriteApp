@@ -68,14 +68,16 @@ export default function SignInScreen() {
 
   return (
     <ScrollView
-      className="flex-1 bg-parchment dark:bg-inkwell"
+      className="flex-1 bg-paper dark:bg-ink"
       contentContainerClassName="flex-grow justify-center px-6 py-12"
       keyboardShouldPersistTaps="handled">
       {/* Logo / title */}
       <View className="mb-10 items-center">
-        <Text className="text-5xl">🐾</Text>
-        <Text className="mt-3 text-3xl font-bold text-inkwell dark:text-parchment">MonsterWrite</Text>
-        <Text className="mt-1 text-sm text-dusk-plum dark:text-mystic-violet">
+        <View className="h-16 w-16 items-center justify-center rounded-lg bg-ink dark:bg-ink-surface">
+          <Text className="font-display text-3xl text-brass">M</Text>
+        </View>
+        <Text className="mt-3 font-display text-4xl text-ink dark:text-paper">MonsterWrite</Text>
+        <Text className="mt-1 font-serif text-sm text-muted-foreground">
           Feed your monster. Build your habit.
         </Text>
       </View>
@@ -96,7 +98,7 @@ export default function SignInScreen() {
           label="Password"
           value={password}
           onChangeText={setPassword}
-          placeholder="••••••••"
+          placeholder="Your password"
           secureTextEntry
           autoComplete="current-password"
           error={errors.password}
@@ -105,11 +107,11 @@ export default function SignInScreen() {
         <Button
           onPress={handleEmailSignIn}
           disabled={loading}
-          className="mt-2 h-14 rounded-xl bg-monster-green active:bg-monster-green/80">
+          className="mt-2 h-14 rounded-lg bg-ink dark:bg-paper active:bg-ink/90 dark:active:bg-paper/90">
           {loading ? (
-            <ActivityIndicator color="#1A1625" />
+            <ActivityIndicator color="#B0822F" />
           ) : (
-            <UIText className="text-base font-bold text-inkwell">Sign In</UIText>
+            <UIText className="font-serif text-base font-semibold text-paper dark:text-ink">Sign in</UIText>
           )}
         </Button>
 
@@ -127,14 +129,14 @@ export default function SignInScreen() {
 
       {/* Footer */}
       <View className="mt-8 flex-row items-center justify-center gap-1">
-        <Text className="text-sm text-dusk-plum dark:text-mystic-violet">
-          Don't have an account?
+        <Text className="font-serif text-sm text-muted-foreground">
+          Don&apos;t have an account?
         </Text>
         <Button
           variant="link"
           onPress={() => router.push('/(auth)/sign-up')}
           className="p-0">
-          <UIText className="text-sm font-semibold text-monster-green">Sign Up</UIText>
+          <UIText className="font-serif text-sm font-semibold text-accent">Sign up</UIText>
         </Button>
       </View>
     </ScrollView>

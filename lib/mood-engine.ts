@@ -4,10 +4,10 @@ import { daysBetween, getToday } from '@/lib/date';
 /**
  * Calculates the monster's current mood based on feeding history.
  *
- * Fed today → "ecstatic" (streak >= 7) or "happy"
- * 1 day missed → "neutral"
- * 2–3 days missed → "sad"
- * 4+ days missed → "distressed"
+ * Fed today -> "ecstatic" (streak >= 7) or "happy"
+ * 1 day missed -> "neutral"
+ * 2-3 days missed -> "sad"
+ * 4+ days missed -> "distressed"
  */
 export function calculateMood(
   lastFedAt: string | null,

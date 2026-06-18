@@ -9,39 +9,39 @@ export type BadgeType =
 export interface BadgeInfo {
   name: string;
   description: string;
-  icon: string; // emoji placeholder until real icons are added
+  icon: string; // Lucide icon name (see components/shared/BadgeGrid.tsx)
 }
 
 export const BADGE_INFO: Record<BadgeType, BadgeInfo> = {
   first_feed: {
-    name: 'First Feeding',
+    name: 'First feeding',
     description: 'Fed your monster for the first time.',
-    icon: '🍖',
+    icon: 'Drumstick',
   },
   first_evolution: {
-    name: 'Evolution!',
+    name: 'Evolution',
     description: 'Your monster evolved for the first time.',
-    icon: '✨',
+    icon: 'Sparkles',
   },
   streak_7: {
-    name: '7-Day Streak',
+    name: '7-day streak',
     description: 'Wrote for 7 days in a row.',
-    icon: '🔥',
+    icon: 'Flame',
   },
   streak_30: {
-    name: '30-Day Streak',
+    name: '30-day streak',
     description: 'Wrote for 30 days in a row.',
-    icon: '💎',
+    icon: 'Gem',
   },
   words_10k: {
-    name: '10,000 Words',
+    name: '10,000 words',
     description: 'Written 10,000 total words.',
-    icon: '📖',
+    icon: 'BookOpen',
   },
   words_50k: {
-    name: '50,000 Words',
-    description: 'Written 50,000 total words. A novel\'s worth!',
-    icon: '🏆',
+    name: '50,000 words',
+    description: 'Written 50,000 total words. A novel\'s worth.',
+    icon: 'Trophy',
   },
 };
 
