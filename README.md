@@ -49,7 +49,7 @@ npm run prebuild    # expo prebuild (regenerate ios/ android/ folders)
 
 ## Architecture
 
-See [`../architecture.md`](../architecture.md) for full project structure and conventions.
+See [`docs/architecture.md`](docs/architecture.md) for full project structure and conventions.
 
 **Key stack:**
 
@@ -60,3 +60,14 @@ See [`../architecture.md`](../architecture.md) for full project structure and co
 - Supabase (auth + database)
 - RevenueCat (in-app purchases)
 - Lottie (monster animations)
+
+## Design system
+
+MonsterWrite uses a **warm dark-academia** look — parchment & espresso neutrals with
+brass / oxblood / olive / terracotta accents, serif-forward type, and no emoji.
+
+- [`docs/design-system.md`](docs/design-system.md) — colors, type, spacing, components, monsters & moods
+- [`docs/content-style.md`](docs/content-style.md) — voice & copy rules
+- [`docs/iconography.md`](docs/iconography.md) — Lucide-only icon rules
+
+When building or restyling UI, run the [`monsterwrite-design`](.claude/skills/monsterwrite-design/SKILL.md) skill.

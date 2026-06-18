@@ -61,42 +61,6 @@ npm run reset-project
 - `hooks/` — custom React hooks
 - `constants/` — static config (theme tokens, etc.)
 
-## gstack
+## Tech Stack
 
-Use the `/browse` skill from gstack for all web browsing. Never use `mcp__claude-in-chrome__*` tools.
-
-If gstack skills aren't working, run `cd .claude/skills/gstack && ./setup` to build the binary and register skills.
-
-Available gstack skills:
-
-- `/office-hours` — open-ended consulting and advice
-- `/plan-ceo-review` — review a plan from a CEO perspective
-- `/plan-eng-review` — review a plan from an engineering perspective
-- `/plan-design-review` — review a plan from a design perspective
-- `/design-consultation` — design consultation and feedback
-- `/design-shotgun` — generate multiple design directions quickly
-- `/design-html` — generate HTML/CSS designs
-- `/review` — code review
-- `/ship` — ship a feature end-to-end
-- `/land-and-deploy` — land and deploy changes
-- `/canary` — canary deploy and monitor
-- `/benchmark` — run benchmarks
-- `/browse` — headless browser for web browsing and QA
-- `/connect-chrome` — connect to a Chrome instance
-- `/qa` — full QA testing flow
-- `/qa-only` — QA testing without setup
-- `/design-review` — visual design review
-- `/setup-browser-cookies` — configure browser cookies
-- `/setup-deploy` — configure deployment
-- `/retro` — retrospective facilitation
-- `/investigate` — investigate a bug or issue
-- `/document-release` — document a release
-- `/codex` — coding agent tasks
-- `/cso` — chief security officer review
-- `/autoplan` — automatically plan a task
-- `/careful` — extra-careful mode for risky changes
-- `/freeze` — freeze a file from edits
-- `/guard` — guard against regressions
-- `/unfreeze` — unfreeze a file
-- `/gstack-upgrade` — upgrade gstack to latest
-- `/learn` — learn about a codebase or topic
+See `../docs/tech-stack.md` for the full tech stack.

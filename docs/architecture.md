@@ -108,22 +108,29 @@ Used for Zustand persistence and any other fast key-value storage (user preferen
 ## Styling
 
 - **NativeWind** (Tailwind CSS) is the primary styling tool — use utility classes in JSX.
-- **`constants/theme.ts`** for `Colors` and `Fonts` tokens used in the navigation theme and legacy `StyleSheet` code.
+- **`constants/theme.ts`** for `BrandColors`, `MoodColors`, `Colors`, and `Fonts` tokens used in the navigation theme and legacy `StyleSheet` code.
 - **Platform files:** use `.ios.tsx` / `.web.ts` suffixes for platform-specific implementations.
-- **Light/dark mode:** `useColorScheme()` hook + Tailwind `dark:` variant.
+- **Light/dark mode:** `useColorScheme()` hook + Tailwind `dark:` variant. Both themes are warm.
 
-Brand colors are defined in `tailwind.config.js` as custom theme extensions:
+The brand is **warm dark academia**. The full design system — color, type, spacing,
+components, monsters & moods, and do/don't — is documented in
+[`design-system.md`](./design-system.md), with [`content-style.md`](./content-style.md)
+(voice) and [`iconography.md`](./iconography.md) (Lucide icons). Brand colors are defined
+in `tailwind.config.js` / `constants/theme.ts`:
 
-| Token           | Hex     | Usage                                  |
-| --------------- | ------- | -------------------------------------- |
-| `inkwell`       | #1A1625 | Primary dark background                |
-| `dusk-plum`     | #2D2440 | Secondary background, cards            |
-| `parchment`     | #F2EDE4 | Light mode background, writing surface |
-| `monster-green` | #5BF178 | Success, goal met, fed state           |
-| `hungry-orange` | #FF7B3A | Warning, hungry monster state          |
-| `happy-gold`    | #FFD166 | Streaks, achievements, milestones      |
-| `sad-blue`      | #7CA5D4 | Sad/missed day monster state           |
-| `mystic-violet` | #B388FF | Accents, evolution events              |
+| Token        | Hex     | Usage                              |
+| ------------ | ------- | ---------------------------------- |
+| `paper`      | #F0E6D1 | Light background (parchment)       |
+| `surface`    | #FBF6EB | Light card / raised surface        |
+| `ink`        | #14100A | Espresso — dark bg & primary text  |
+| `ink-surface`| #2A2117 | Dark card / raised surface         |
+| `brass`      | #B0822F | Primary accent / gilt              |
+| `oxblood`    | #74302E | Emphasis + destructive             |
+| `olive`      | #5E6535 | Success / "fed"                    |
+| `terracotta` | #B05C36 | Warning / hunger                   |
+| `study-teal` | #3F6B66 | Info                               |
+
+Monster mood fills come from the `MoodColors` scale (`mood-ecstatic` … `mood-distressed`).
 
 ---
 
